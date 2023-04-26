@@ -1,20 +1,19 @@
-const Header = (prop) => {
-  console.log(prop)
+const Header = ({header}) => {
   return (
-    <h1>{prop.header}</h1>
+    <h1>{header}</h1>
   )
 }
 
-const Part = (prop) => {
+const Part = ({part : {name, exercises}}) => {
   return (
-    <p>{prop.part.name + " " + prop.part.exercises}</p>
+    <p>{name + " " + exercises}</p>
   )
 }
 
-const Content = (prop) => {
+const Content = ({parts}) => {
   return (
     <>
-    {prop.parts.map(element => {
+    {parts.map(element => {
       return <Part part={element}/>;
     })
     }
@@ -22,9 +21,9 @@ const Content = (prop) => {
   )
 }
 
-const Total = (prop) => {
+const Total = ({parts}) => {
   return (
-    <p> Number of exercises {prop.parts.reduce(
+    <p> Number of exercises {parts.reduce(
       (accumulator, currentValue) => accumulator + currentValue.exercises,
       0
     )} </p>
